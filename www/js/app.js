@@ -23,7 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
     templateUrl: 'templates/tabs.html'
   })
   .state('tab.dash', {
-    url: '/dash',
+    url: '/chats',
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
@@ -32,7 +32,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
     }
   })
   .state('tab.chats', {
-      url: '/chats',
+      url: '/dash',
       views: {
         'tab-chats': {
           templateUrl: 'templates/tab-chats.html',
