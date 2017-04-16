@@ -20,6 +20,13 @@
     <!-- ionic/angularjs js -->
 
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <script src="lib/angular-material/angular-material.js"></script>
+    <script src="lib/angular-messages/angular-messages.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+
     <script src="https://use.fontawesome.com/d19f6c9a89.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB16sGmIekuGIvYOfNoW9T44377IU2d2Es&sensor=true"></script>
 
@@ -35,20 +42,6 @@
     <script src="js/controllers.js"></script>
     <script src="js/directives.js"></script>
     <script src="js/services.js"></script>
-
-    <script language="javascript">
-      angular
-        .module('firstApplication', ['ngMaterial'])
-        .controller('bottomSheetController', bottomSheetController);
-
-      function bottomSheetController ($scope, $mdBottomSheet) {
-        $scope.openBottomSheet = function() {
-          $mdBottomSheet.show({
-            template: '<md-bottom-sheet>Learn <b>Angular Material</b> @ TutorialsPoint.com!</md-bottom-sheet>'
-          });
-        };
-      }
-    </script>
   </head>
 
   <body ng-app="starter" ng-controller="MapCtrl">

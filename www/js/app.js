@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives', 'ngMaterial'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -68,7 +68,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives']
     $stateProvider
       .state('homepage', {
       url: '/2-home-page',
-      templateUrl: 'templates/2-home-page.html'
+      templateUrl: 'templates/2-home-page.html',
+      controller: 'bottomSheetController'
     });
 
     /*

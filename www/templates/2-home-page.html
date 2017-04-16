@@ -16,6 +16,14 @@
         <a href="#/4-home-address" class="add-location button button-block button-assertive">ADD LOCATION</a>
         <a href="#/tab/7-parking-map" class="go-to-map button button-block button-assertive">GO TO PARKING MAP</a>
       </div>
+
+      <md-content class="md-padding">
+        <form ng-submit="$event.preventDefault()">
+          <md-button class="md-raised md-primary" ng-click="openBottomSheet()">
+            Open Bottom Sheet!
+          </md-button>
+        </form>
+      </md-content>
     </ion-content>
 
     <ion-footer-bar class="bar bar-light">
