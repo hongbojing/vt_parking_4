@@ -146,6 +146,36 @@ img {
     margin: 0 auto;
 }
 
+.skip-to-map-button {
+  color: red !important;
+}
+
 .add-locations .next-button {
     margin-top: 90px;
+}
+
+.add-locations .week-days {
+  text-align: center;
+}
+
+.add-locations .week-days button {
+  margin: 0 5px;
+}
+
+.add-locations .time-counting-container {
+  padding-left: 0;
+  text-align: center;
+}
+
+.add-locations .time-counting {
+  font-size: 40px;
+}
+
+.add-locations .add-another-pk {
+  margin-top: 10px;
+  color: gray !important;
+}
+
+.add-locations .add-another-pk .material-icons {
+  font-size: inherit;
 }
