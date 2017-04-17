@@ -8,32 +8,15 @@ angular.module('starter.directives', [])
     },
     link: function ($scope, $element, $attr) {
       function initialize() {
-          $scope.show = function() {
-
-          // Show the action sheet
-          var hideSheet = $ionicActionSheet.show({
-            buttons: [
-              { text: '<b>Share</b> This' },
-              { text: 'Move' }
-            ],
-            destructiveText: 'Delete',
-            titleText: 'Modify your album',
-            cancelText: 'Cancel',
-            cancel: function() {
-                 // add cancel code..
-               },
-            buttonClicked: function(index) {
-              return true;
-            }
-          });
-
-          // For example's sake, hide the sheet after two seconds
-          // $timeout(function() {
-          //   hideSheet();
-          // }, 2000);
-
-        };
         var myLatLng = {lat: 37.231213, lng: -80.426263};
+        var locations = [
+          ['Bondi Beach', 37.232213, -80.425263, 4],
+          ['Coogee Beach', 37.231213, -80.426263, 5],
+          ['Cronulla Beach', 37.233213, -80.424263, 3],
+          ['Manly Beach', 37.234213, -80.426263, 2],
+          ['Maroubra Beach', 37.235213, -80.426263, 1]
+        ];
+
         var image = {
             url: 'img/marker_image_1.png',
             size: new google.maps.Size(75, 73),
@@ -63,16 +46,31 @@ angular.module('starter.directives', [])
         };
         var map = new google.maps.Map($element[0], mapOptions);
 
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!',
-          icon: image
-        });
+        // var marker = new google.maps.Marker({
+        //   position: myLatLng,
+        //   map: map,
+        //   title: 'Hello World!',
+        //   icon: image
+        // });
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map
+          });
+
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              infowindow.setContent(locations[i][0]);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+        }
 
         marker.addListener('click', function() {
           infowindow.open(map, marker);
-        //   $scope.show();
         });
 
         $scope.onCreate({map: map});
