@@ -86,7 +86,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
     $stateProvider
       .state('favorparking', {
         url: '/5-favor-parking',
-        templateUrl: 'templates/5-favor-parking.html'
+        templateUrl: 'templates/5-favor-parking.html',
+        controller: 'FavorParkingController'
       });
 
     /*

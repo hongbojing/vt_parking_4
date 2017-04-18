@@ -1,4 +1,16 @@
 /* Empty. Add your own CSS if you like */
+#logIn .scroll {
+  height: inherit;
+}
+
+.welcome-page .scroll {
+  height: inherit;
+}
+
+#logIn .log-in-image {
+  border-radius: 5px;
+}
+
 .to-be-red {
     color: red !important;
 }
@@ -120,6 +132,11 @@ img {
     background-color: #F5F5F5;
 }
 
+.add-locations .favor-parking-log-info-img {
+  width: 100%;
+  margin: 0;
+}
+
 .add-locations .bar-subheader h2 {
     font-size: 14px;
     color: #9c997c !important;
@@ -162,6 +179,14 @@ img {
   margin: 0 5px;
 }
 
+.add-locations .week-days .buttonActivated {
+  background-color: #fc7b75;
+  color: white;
+}
+
+.add-locations .transparent-divider {
+  border-color: transparent;
+}
 .add-locations .time-counting-container {
   padding-left: 0;
   text-align: center;

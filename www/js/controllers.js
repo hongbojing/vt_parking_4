@@ -19,6 +19,19 @@ angular.module('starter.controllers', ['ngMaterial'])
   };
 })
 
+.controller('FavorParkingController', function($scope) {
+  $scope.showImage = false;
+
+  $scope.activeButton1 = false;
+  $scope.activeButton2 = false;
+  $scope.activeButton3 = false;
+  $scope.activeButton4 = false;
+  $scope.activeButton5 = false;
+  $scope.activeButton6 = false;
+  $scope.activeButton7 = false;
+
+})
+
 .controller('bottomSheetController', function($scope, $mdBottomSheet) {
   $scope.openBottomSheet = function() {
     $mdBottomSheet.show({
