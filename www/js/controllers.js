@@ -26,11 +26,68 @@ angular.module('starter.controllers', ['ngMaterial'])
     });
   };
 })
+.controller('DialogController', function($scope, $mdDialog) {
+  $scope.hide = function() {
+      $mdDialog.hide();
+    };
 
-.controller('MapCtrl', function($scope, $ionicLoading) {
-  $scope.mapCreated = function(map) {
-    $scope.map = map;
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+})
+.controller('MapCtrl', function($scope, $mdDialog, $interval, $ionicLoading) {
+  $scope.showAdvanced = function(ev) {
+    $mdDialog.show({
+      controller: 'DialogController',
+      templateUrl: 'templates/direction-map-template.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: true
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
   };
+
+  $scope.showAdvancedTwo = function(ev) {
+    $mdDialog.show({
+      controller: 'DialogController',
+      templateUrl: 'templates/direction-map-template-two.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: true
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
+  };
+
+  $scope.showAdvancedThree = function(ev) {
+    $mdDialog.show({
+      controller: 'DialogController',
+      templateUrl: 'templates/templates/direction-map-template-three.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: true
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
+  };
+
 
   $scope.centerOnMe = function () {
     console.log("Centering");
@@ -52,4 +109,3 @@ angular.module('starter.controllers', ['ngMaterial'])
     });
   };
 });
-

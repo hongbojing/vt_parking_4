@@ -1,6 +1,6 @@
 angular.module('starter.directives', [])
 
-.directive('map', function($ionicActionSheet) {
+.directive('map', function($mdBottomSheet) {
   return {
     restrict: 'E',
     scope: {
@@ -10,18 +10,45 @@ angular.module('starter.directives', [])
       function initialize() {
         var myLatLng = {lat: 37.231213, lng: -80.426263};
         var locations = [
-          ['Bondi Beach', 37.232213, -80.425263, 4],
-          ['Coogee Beach', 37.231213, -80.426263, 5],
-          ['Cronulla Beach', 37.233213, -80.424263, 3],
-          ['Manly Beach', 37.234213, -80.426263, 2],
-          ['Maroubra Beach', 37.235213, -80.426263, 1]
+          ['Basketball Practice Extension Lot', 37.232213, -80.425263, 4],
+          ['Davidson Lot', 37.231213, -80.426263, 5],
+          ['Derring Hall', 37.233213, -80.424263, 3],
+          ['Derring Lot', 37.234213, -80.426263, 2],
+          ['Dietrick Lot', 37.235213, -80.426263, 1],
+          ['Hahn Lot', 37.230213, -80.427263, 4],
+          ['Perry Street', 37.232213, -80.427263, 4]
         ];
 
-        var image = {
-            url: 'img/marker_image_1.png',
-            size: new google.maps.Size(75, 73),
-            anchor: new google.maps.Point(0, 32)
-        };
+        var images = [
+          {
+              url: 'img/bg_basketball.png',
+              anchor: new google.maps.Point(0, 32)
+          },
+          {
+              url: 'img/bg_davidson.png',
+              anchor: new google.maps.Point(0, 32)
+          },
+          {
+              url: 'img/bg_derringH.png',
+              anchor: new google.maps.Point(0, 32)
+          },
+          {
+              url: 'img/bg_derringL.png',
+              anchor: new google.maps.Point(0, 32)
+          },
+          {
+              url: 'img/bg_dietrick.png',
+              anchor: new google.maps.Point(0, 32)
+          },
+          {
+              url: 'img/bg_hahn.png',
+              anchor: new google.maps.Point(0, 32)
+          },
+          {
+              url: 'img/bg_perryStreet.png',
+              anchor: new google.maps.Point(0, 32)
+          }
+        ];
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
@@ -44,34 +71,52 @@ angular.module('starter.directives', [])
           zoom: 16,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
         var map = new google.maps.Map($element[0], mapOptions);
-
-        // var marker = new google.maps.Marker({
-        //   position: myLatLng,
-        //   map: map,
-        //   title: 'Hello World!',
-        //   icon: image
-        // });
 
         var marker, i;
 
         for (i = 0; i < locations.length; i++) {
           marker = new google.maps.Marker({
             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-            map: map
+            map: map,
+            icon: images[i]
           });
 
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-              infowindow.setContent(locations[i][0]);
-              infowindow.open(map, marker);
+              showMapPopWindow();
             }
           })(marker, i));
         }
 
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
+        // marker.addListener('click', function() {
+        //   infowindow.open(map, marker);
+        // });
+
+        function showMapPopWindow () {
+          $mdBottomSheet.show({
+            templateUrl: 'templates/map-pop-up-window-template.html',
+            controller: 'MapCtrl'
+          });
+        }
+
+        $scope.calculateAndDisplayRoute = function (directionsService, directionsDisplay) {
+          var start = '37.231213, -80.426263';
+          var end = '37.232213, -80.427263';
+          directionsService.route({
+            origin: start,
+            destination: end,
+            travelMode: 'DRIVING'
+          }, function(response, status) {
+            if (status === 'OK') {
+              directionsDisplay.setDirections(response);
+            } else {
+              window.alert('Directions request failed due to ' + status);
+            }
+          });
+        };
 
         $scope.onCreate({map: map});
 
