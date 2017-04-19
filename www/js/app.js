@@ -19,39 +19,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
   /*
   最开始建立的基准的state,是一个会随着其他dot之后的内容一起走的.
    */
-  $stateProvider
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
-    /*
-    state 的第一个小分支
-    #1: log-in
-     */
-  .state('tab.login', {
-    url: '/1-log-in',
-    views: {
-      'tab-login': {
-        templateUrl: 'templates/1-log-in.html',
-        controller: 'LoginCtrl'//need to be changed to LoginCtrl
-      }
-    }
-  })
-  /*
-    state 的第二个小分支
-    #7: parking-map
-     */
-  .state('tab.parkingmap', {
-      url: '/7-parking-map',
-      views: {
-        'tab-parkingmap': {
-          templateUrl: 'templates/7-parking-map.html',
-          controller: 'MapCtrl'
-        }
-      }
-    });
 
+    /*
+     #1: log-in
+     */
+    $stateProvider
+      .state('login', {
+        url: '/1-log-in',
+        templateUrl: 'templates/1-log-in.html',
+        controller: 'LoginCtrl'
+      });
     /*
      #2: home-page
      */
@@ -100,9 +77,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
       templateUrl: 'templates/6-personal-setting.html'
     });
 
+    /*
+     #7: parking-map
+     */
+    $stateProvider
+      .state('parkingmap', {
+        url: '/7-parking-map',
+        templateUrl: 'templates/7-parking-map.html',
+        controller: 'MapCtrl'
+      });
+
   /*
   定义默认的路径
    */
-  $urlRouterProvider.otherwise('/tab/1-log-in');
+  $urlRouterProvider.otherwise('/1-log-in');
 
 });
