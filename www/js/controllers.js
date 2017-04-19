@@ -85,6 +85,22 @@ angular.module('starter.controllers', ['ngMaterial'])
     });
   };
 
+  $scope.showAdvancedTwoHalf = function(ev) {
+    $mdDialog.show({
+      controller: 'DialogController',
+      templateUrl: 'templates/direction-map-template-two-half.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      fullscreen: true
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
+  };
+
   $scope.showAdvancedThree = function(ev) {
     $mdDialog.show({
       controller: 'DialogController',
