@@ -116,10 +116,20 @@ img {
     margin-top: 25px;
 }
 
+.welcome-page .home-page-title {
+  right: 0 !important;
+}
+
+.welcome-page .home-page-title a{
+  text-decoration: none;
+}
+
 .welcome-page .fa-cog {
     margin-right: 10px;
 }
 
+#logIn .not-jingyi,
+#logIn .to-be-red,
 .welcome-page .log-out-btn,
 .welcome-page .not-jingyi {
     font-size: 14px !important;
@@ -203,4 +213,9 @@ img {
 
 .add-locations .add-another-pk .material-icons {
   font-size: inherit;
+}
+
+.add-locations .add-locations-hours-input,
+.add-locations .add-locations-minutes-input {
+  color: red;
 }

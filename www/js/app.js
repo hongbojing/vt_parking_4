@@ -54,7 +54,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
     $stateProvider
       .state('homeaddress', {
         url: '/4-home-address',
-        templateUrl: 'templates/4-home-address.html'
+        templateUrl: 'templates/4-home-address.html',
+        controller: 'HomeaddressController'
       });
 
     /*
@@ -85,6 +86,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.directives',
         url: '/7-parking-map',
         templateUrl: 'templates/7-parking-map.html',
         controller: 'MapCtrl'
+      });
+
+    /*
+     #8: your-location
+     */
+    $stateProvider
+      .state('yourlocation', {
+        url: '/8-your-location',
+        templateUrl: 'templates/8-your-location.html',
+        controller: 'HomeaddressController'
       });
 
   /*
